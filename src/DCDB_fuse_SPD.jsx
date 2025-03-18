@@ -84,16 +84,14 @@ const DCDBTable = () => {
   }, []);
 
   return (
-    <div className="p-6 font-sans">
+    <div className="p-6 ">
       {/* Table Section */}
-      <div className="overflow-hidden mb-8">
-        <h2 className="text-2xl font-bold text-cyan-900 pb-4">
-          DCDB (Fuse + SPD)
-        </h2>
+      <h2 className="text-2xl font-bold mb-4">DCDB (Fuse + SPD)</h2>
 
-        <table className="min-w-full border-collapse border border-gray-300">
-          <thead className="bg-cyan-900 text-white">
-            <tr className="">
+      <div className="overflow-x-auto rounded-lg border">
+        <table className="min-w-full divide-y divide-gray-200">
+          <thead className="bg-gray-50">
+            <tr>
               {[
                 "Order Code",
                 "PV Rating",
@@ -106,7 +104,7 @@ const DCDBTable = () => {
               ].map((header, index) => (
                 <th
                   key={index}
-                  className="px-4 py-3 text-md font-semibold text-center text-white"
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
                 >
                   {header}
                 </th>
@@ -114,74 +112,77 @@ const DCDBTable = () => {
             </tr>
           </thead>
 
-          <tbody className="divide-y divide-gray-200 text-left">
+          <tbody className="bg-white divide-y divide-gray-200">
             {dcdb_fusespd.data.map((item, index) => (
-              <tr key={index} className="hover:bg-gray-50 transition-colors">
-                <td className="border border-gray-300 px-4 py-2">
+              <tr key={index}>
+                <td className="px-6 py-4 whitespace-nowrap text-sm font-mono text-blue-600">
                   {item.orderCode}
                 </td>
-                <td className="border border-gray-300 px-4 py-2">
+                <td className="px-6 py-4 whitespace-nowrap text-sm">
                   {item.pvRating}
                 </td>
-                <td className="border border-gray-300 px-4 py-2">
+                <td className="px-6 py-4 whitespace-nowrap text-sm">
                   {item.string}
                 </td>
-                <td className="border border-gray-300 px-4 py-2">
+                <td className="px-6 py-4 whitespace-nowrap text-sm">
                   {item.dbSize}
                 </td>
-                <td className="border border-gray-300 px-4 py-2">
+                <td className="px-6 py-4 whitespace-nowrap text-sm">
                   {item.fuse}
                 </td>
-                <td className="border border-gray-300 px-4 py-2">
+                <td className="px-6 py-4 whitespace-nowrap text-sm">
                   {item.spdType}
                 </td>
-                <td className="border border-gray-300 px-4 py-2">
+                <td className="px-6 py-4 whitespace-nowrap text-sm">
                   {item.spdNos}
                 </td>
-                <td className="px-4 py-3 font-bold text-orange-500">
-                  {/* ₹{item.price.toLocaleString()} */} ₹
-                  {prices[item.orderCode] ?? item.price}
+                <td className="px-4 py-3 font-bold text-orange-500 text-center">
+                  ₹ {prices[item.orderCode] ?? item.price}
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-      </div>
+        {/* Notes Section */}
+        {dcdb_fusespd.notes.length > 0 && (
+          <div className="mb-8 bg-gray-50 p-4 rounded-lg border border-gray-200">
+            {dcdb_fusespd.notes.map((note, index) => (
+              <p key={index} className="text-sm text-gray-600 mb-1">
+                * {note}
+              </p>
+            ))}
+          </div>
+        )}
 
-      {/* Notes Section */}
-      <div className="mb-8">
-        {dcdb_fusespd.notes.map((note, index) => (
-          <p key={index} className="text-sm text-gray-600 mb-2">
-            * {note}
-          </p>
-        ))}
-      </div>
+        {/* Specifications Section */}
+        <div className="border border-gray-300 rounded-lg p-6 bg-gray-50">
+          <h2 className="text-xl font-bold text-gray-700 mb-4">
+            Specifications
+          </h2>
 
-      {/* Specifications Section */}
-      <div className="grid md:grid-cols-3 gap-6">
-        <div>
-          <h3 className="text-lg font-semibold text-[#24578a] mb-2">MCB</h3>
-          {dcdb_fusespd.specifications.mcb.map((item, index) => (
-            <p key={index} className="text-gray-700">
-              {item}
-            </p>
-          ))}
-        </div>
-        <div>
-          <h3 className="text-lg font-semibold text-[#24578a] mb-2">SPD</h3>
-          {dcdb_fusespd.specifications.spd.map((item, index) => (
-            <p key={index} className="text-gray-700">
-              {item}
-            </p>
-          ))}
-        </div>
-        <div>
-          <h3 className="text-lg font-semibold text-[#24578a] mb-2">Fuse</h3>
-          {dcdb_fusespd.specifications.fuse.map((item, index) => (
-            <p key={index} className="text-gray-700">
-              {item}
-            </p>
-          ))}
+          <div className="grid md:grid-cols-3 gap-6">
+            {[
+              { title: "MCB", data: dcdb_fusespd.specifications.mcb },
+              { title: "SPD", data: dcdb_fusespd.specifications.spd },
+              { title: "Fuse", data: dcdb_fusespd.specifications.fuse },
+            ].map((spec, index) => (
+              <div
+                key={index}
+                className="bg-gray-100 shadow-md rounded-lg p-4 border border-gray-300"
+              >
+                <h3 className="text-lg font-semibold text-gray-800 mb-2">
+                  {spec.title}
+                </h3>
+                <ul className="space-y-2">
+                  {spec.data.map((item, i) => (
+                    <li key={i} className="text-gray-700 border-b pb-1">
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

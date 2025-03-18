@@ -115,15 +115,12 @@ const DCDB_FUSE_MCB_SPD = () => {
   }, []);
 
   return (
-    <div className="p-6 font-sans">
+    <div className="p-6">
+      <h2 className="text-2xl font-bold mb-4">DCDB (FUSE+MCB+SPD)</h2>
       {/* Table Section */}
-      <div className="overflow-hidden mb-8">
-        <h2 className="text-2xl font-bold text-cyan-900 pb-4">
-          DCDB (FUSE+MCB+SPD)
-        </h2>
-
-        <table className="min-w-full border-collapse border border-gray-300">
-          <thead className="bg-cyan-900 text-white">
+      <div className="overflow-x-auto rounded-lg border">
+        <table className="min-w-full divide-y divide-gray-200">
+          <thead className="bg-gray-50">
             <tr>
               {[
                 "Order Code",
@@ -138,7 +135,7 @@ const DCDB_FUSE_MCB_SPD = () => {
               ].map((header, index) => (
                 <th
                   key={index}
-                  className="px-4 py-3 text-md font-semibold text-center text-white"
+                  className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase"
                 >
                   {header}
                 </th>
@@ -146,31 +143,31 @@ const DCDB_FUSE_MCB_SPD = () => {
             </tr>
           </thead>
 
-          <tbody className="divide-y divide-gray-200 text-left">
+          <tbody className="bg-white divide-y divide-gray-200">
             {dcdbProducts.products.map((item, index) => (
-              <tr key={index} className="hover:bg-gray-50 transition-colors">
-                <td className="border border-gray-300 px-4 py-2">
+              <tr key={index}>
+                <td className="px-6 py-4 whitespace-nowrap text-sm font-mono text-blue-600">
                   {item.order}
                 </td>
-                <td className="border border-gray-300 px-4 py-2">
+                <td className="px-6 py-4 whitespace-nowrap text-sm">
                   {item.pvRating}
                 </td>
-                <td className="border border-gray-300 px-4 py-2">
+                <td className="px-6 py-4 whitespace-nowrap text-sm">
                   {item.string}
                 </td>
-                <td className="border border-gray-300 px-4 py-2">
+                <td className="px-6 py-4 whitespace-nowrap text-sm">
                   {`${item.dbSize.width}x${item.dbSize.height}x${item.dbSize.depth}`}
                 </td>
-                <td className="border border-gray-300 px-4 py-2">
+                <td className="px-6 py-4 whitespace-nowrap text-sm">
                   {item.fuse}
                 </td>
-                <td className="border border-gray-300 px-4 py-2">
+                <td className="px-6 py-4 whitespace-nowrap text-sm">
                   {`${item.mcb.rating}-${item.mcb.voltage}V`}
                 </td>
-                <td className="border border-gray-300 px-4 py-2">
+                <td className="px-6 py-4 whitespace-nowrap text-sm">
                   {`${item.spd.type}-${item.spd.voltage}V`}
                 </td>
-                <td className="border border-gray-300 px-4 py-2">
+                <td className="px-6 py-4 whitespace-nowrap text-sm">
                   {item.quantity}
                 </td>
                 <td className="px-4 py-3 font-bold text-orange-500">
@@ -182,8 +179,8 @@ const DCDB_FUSE_MCB_SPD = () => {
         </table>
 
         {/* Notes Section */}
-        <div className="mb-8">
-          <p className="text-sm text-gray-600 mb-2">
+        <div className="p-5">
+          <p className="text-sm text-gray-600 ">
             * The prices are applicable for a MOQ of {dcdbProducts.metadata.moq}{" "}
             units.
           </p>

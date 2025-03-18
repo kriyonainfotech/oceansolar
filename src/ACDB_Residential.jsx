@@ -88,53 +88,74 @@ const ACDBResidential = () => {
   }, []);
 
   return (
-    <div className="p-4">
-      <h2 className="text-2xl font-bold text-cyan-900 mb-4">
-        ACDB ( Residential )
-      </h2>
-      <table className="min-w-full border-collapse border border-gray-300">
-        <thead>
-          <tr className="bg-cyan-900 text-white">
-            <th className="border border-gray-300 px-4 py-2">Order Code</th>
-            <th className="border border-gray-300 px-4 py-2">PV Rating</th>
-            <th className="border border-gray-300 px-4 py-2">Phase</th>
-            <th className="border border-gray-300 px-4 py-2">DB Size (cm)</th>
-            <th className="border border-gray-300 px-4 py-2">MCB (A)</th>
-            <th className="border border-gray-300 px-4 py-2">SPD Type</th>
-            <th className="border border-gray-300 px-4 py-2">
-              Phase Indicator
-            </th>
-            <th className="border border-gray-300 px-4 py-2">Price (₹)</th>
-          </tr>
-        </thead>
-        <tbody>
-          {ACDB_Residential.data.map((item) => (
-            <tr key={item.orderCode} className="border border-gray-300">
-              <td className="border border-gray-300 px-4 py-2">
-                {item.orderCode}
-              </td>
-              <td className="border border-gray-300 px-4 py-2">
-                {item.pv_rating}
-              </td>
-              <td className="border border-gray-300 px-4 py-2">{item.phase}</td>
-              <td className="border border-gray-300 px-4 py-2">
-                {item.db_size_cm}
-              </td>
-              <td className="border border-gray-300 px-4 py-2">{item.mcb_a}</td>
-              <td className="border border-gray-300 px-4 py-2">
-                {item.spd_type}
-              </td>
-              <td className="border border-gray-300 px-4 py-2">
-                {item.phase_indicator}
-              </td>
-              <td className="border border-gray-300 px-4 py-2 font-bold text-orange-500">
-                ₹{prices[item.orderCode] ?? item.price}
-              </td>
+    <div className="p-6">
+      {/* Title */}
+      <h2 className="text-2xl font-bold mb-4">ACDB ( Residential )</h2>
+
+      {/* Table Wrapper for Proper Border-Radius */}
+      <div className="overflow-x-auto rounded-lg border">
+        <table className="min-w-full divide-y divide-gray-200">
+          <thead className="bg-gray-50">
+            <tr>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                Order Code
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                PV Rating
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                Phase
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                DB Size (cm)
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                MCB (A)
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                SPD Type
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                Phase Indicator
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                Price (₹)
+              </th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-      <p className="text-sm text-gray-600 mt-2">{ACDB_Residential.notes}</p>
+          </thead>
+          <tbody className="bg-white divide-y divide-gray-200">
+            {ACDB_Residential.data.map((item) => (
+              <tr key={item.orderCode} className="border border-gray-300">
+                <td className="px-6 py-4 whitespace-nowrap text-sm font-mono text-blue-600">
+                  {item.orderCode}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm">
+                  {item.pv_rating}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm">
+                  {item.phase}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm">
+                  {item.db_size_cm}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm">
+                  {item.mcb_a}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm">
+                  {item.spd_type}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm">
+                  {item.phase_indicator}
+                </td>
+                <td className="border border-gray-300 px-4 py-2 font-bold text-orange-500">
+                  ₹{prices[item.orderCode] ?? item.price}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        <p className="text-sm text-gray-600 p-5">*{ACDB_Residential.notes}</p>
+      </div>
     </div>
   );
 };
