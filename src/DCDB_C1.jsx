@@ -356,7 +356,7 @@
                     {item.fuseQty}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                    ₹ {item.price}
+                    {item.price} ₹
                   </td>
                 </tr>
               ))}

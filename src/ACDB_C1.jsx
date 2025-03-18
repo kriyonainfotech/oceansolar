@@ -165,8 +165,8 @@ const ACDBTable1 = () => {
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                   {item.gland}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-green-600">
-                  ₹{item.price}
+                <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold">
+                  {item.price} ₹
                 </td>
               </tr>
             ))}

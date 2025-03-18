@@ -96,7 +96,6 @@ const DCDB_LAST = () => {
 
    return (
      <div className="p-6">
-      
        {/* Main Products Table */}
        <div className="overflow-x-auto rounded-lg border mb-6">
          <h3 className="text-lg font-semibold p-4 bg-gray-100">AJB</h3>
@@ -177,7 +176,7 @@ const DCDB_LAST = () => {
                    {item.item}
                  </td>
                  <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                   {item.price}
+                   {item.price} ₹
                  </td>
                </tr>
              ))}

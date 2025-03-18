@@ -300,334 +300,444 @@ const data = [
   },
 ];
 
-const BOSKitTable = () => {
-  return (
-    <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">
-        BOS Kit - For Residential Solar Project
-      </h2>
-      <div className="overflow-x-auto rounded-lg border">
-        <table border={1} className="min-w-full divide-y divide-gray-200">
-          <thead className="bg-gray-50">
-            <tr>
-              <th
-                className="px-6 py-3 text-left text-md font-semibold text-gray-800 uppercase"
-                colSpan="4"
-              >
-                Bills of Material
-              </th>
-              <th
-                className="px-6 py-3 text-left text-md font-semibold text-gray-800 uppercase"
-                colSpan="3"
-              >
-                Item Quantity
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr className="bg-gray-100">
-              <th className="px-6 py-3 text-left text-md font-semibold text-gray-800 uppercase">
-                Option 1
-              </th>
-              <th className="px-6 py-3 text-left text-md font-semibold text-gray-800 uppercase">
-                Option 2
-              </th>
-              <th className="px-6 py-3 text-left text-md font-semibold text-gray-800 uppercase">
-                Item Description
-              </th>
-              <th className="px-6 py-3 text-left text-md font-semibold text-gray-800 uppercase">
-                Item Specification
-              </th>
-              <th className="px-6 py-3 text-left text-md font-semibold text-gray-800 uppercase">
-                1‑5KW
-              </th>
-              <th className="px-6 py-3 text-left text-md font-semibold text-gray-800 uppercase">
-                4‑6KW
-              </th>
-              <th className="px-6 py-3 text-left text-md font-semibold text-gray-800 uppercase">
-                6‑10KW
-              </th>
-            </tr>
-            <tr className="">
-              <td rowSpan={3} colSpan={2}>
-                SPD‑STEL/ Finder MCB‑C&S{" "}
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">DCDB</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">
-                DCDB witd 600V SPD, 500V MCB
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">
-                1 Nos. (1 in 1 Out)
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">
-                1 Nos. (2 in 2 Out)
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">
-                1 Nos. (2 in 2 Out)
-              </td>
-            </tr>
-            <tr>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">
-                ACDB 1‑Ph.
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">
-                ACDB witd 1‑Ph. SPD & 1‑Ph. MCB
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">1 Nos.</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">1 Nos.</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">-</td>
-            </tr>
-            <tr>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">
-                ACDB 3‑Ph.
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">
-                ACDB witd 3 ‑Ph SPD & 3‑Ph. MCB
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">-</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">-</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">1 Nos.</td>
-            </tr>
+   const data2 = [
+     {
+       option: "Option 1",
+       brand: "Polycab",
+       prices: [10750, 15600, 17650],
+     },
+     {
+       option: "Option 2",
+       brand: "Polyguard",
+       prices: [9400, 12560, 15550],
+     },
+   ];
 
-            <tr>
-              <td colSpan={2}>Polycab</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">
-                Solar DC Wire
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">
-                2.5 Sq.mm EN Standard
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">25 Mtr.</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">50 Mtr.</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">50 Mtr.</td>
-            </tr>
-            <tr>
-              <td rowSpan={8}>Polycab</td>
-              <td rowSpan={8}>Polyguard Or Reputed (ISI)</td>
-              <td rowSpan={6}>AC Copper Flexible Wire</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">
-                <span className="text-red-500 px-3">(Option 1)</span> 2.5 Sq.mm
-                Red & Black Wire{" "}
-                <span className="text-red-500 px-3">Polycab</span>
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">25 Mtr.</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">-</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">-</td>
-            </tr>
-            <tr>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">
-                <span className="text-red-500 px-3">(Option 1)</span>4 Sq.mm Red
-                & Black Wire <span className="text-red-500 px-3">Polycab</span>
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">-</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">25 Mtr.</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">-</td>
-            </tr>
-            <tr>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">
-                <span className="text-red-500 px-3">(Option 1)</span>
-                4C x 4 Sq.mm Cable{" "}
-                <span className="text-red-500 px-3">Polycab</span>
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">-</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">-</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">25 Mtr.</td>
-            </tr>
-            <tr>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">
-                <span className="text-red-500 px-3">(Option 2)</span> 2C x 2.5
-                Sq.mm Cable <span className="text-red-500 px-3">Polyguard</span>
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">30 Mtr.</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">-</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">-</td>
-            </tr>
-            <tr>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">
-                <span className="text-red-500 px-3">(Option 2)</span>
-                2C x 4 Sq.mm Cable{" "}
-                <span className="text-red-500 px-3">Polyguard</span>
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">-</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">30 Mtr. </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">-</td>
-            </tr>
-            <tr>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">
-                {" "}
-                <span className="text-red-500 px-3">(Option 2)</span>4C x 4
-                Sq.mm Cable <span className="text-red-500 px-3">Polyguard</span>
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">-</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">-</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">30 Mtr.</td>
-            </tr>
-            <tr>
-              <td rowSpan={2}>Eartding & LA Wire</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">
-                4 Sq.mm Copper Wire
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">50 Mtr.</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">50 Mtr.</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">50 Mtr.</td>
-            </tr>
-            <tr>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">
-                16 Sq.mm Aluminum Wire
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">34 Mtr.</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">34 Mtr.</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">34 Mtr.</td>
-            </tr>
-            <tr>
-              <td rowSpan={3} colSpan={2}>
-                Samptel
-              </td>
-              <td rowSpan={3}>Eartding & LA</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">
-                Copper Bonded Multi‑Spike LA 14mm x 1 Mtr.
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">1 Nos.</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">1 Nos.</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">1 Nos.</td>
-            </tr>
-            <tr>
-              {/* <td className="px-6 py-4 whitespace-nowrap text-sm"></td>
+   const BOSKitTable = () => {
+     return (
+       <div className="p-6">
+         <h2 className="text-2xl font-bold mb-4">
+           BOS Kit - For Residential Solar Project
+         </h2>
+         <div className="overflow-x-auto rounded-lg border">
+           <table border={1} className="min-w-full divide-y divide-gray-200">
+             <thead className="bg-gray-50">
+               <tr>
+                 <th
+                   className="px-6 py-3 text-left text-md font-semibold text-gray-800 uppercase"
+                   colSpan="4"
+                 >
+                   Bills of Material
+                 </th>
+                 <th
+                   className="px-6 py-3 text-left text-md font-semibold text-gray-800 uppercase"
+                   colSpan="3"
+                 >
+                   Item Quantity
+                 </th>
+               </tr>
+             </thead>
+             <tbody>
+               <tr className="bg-gray-100">
+                 <th className="px-6 py-3 text-left text-md font-semibold text-gray-800 uppercase">
+                   Option 1
+                 </th>
+                 <th className="px-6 py-3 text-left text-md font-semibold text-gray-800 uppercase">
+                   Option 2
+                 </th>
+                 <th className="px-6 py-3 text-left text-md font-semibold text-gray-800 uppercase">
+                   Item Description
+                 </th>
+                 <th className="px-6 py-3 text-left text-md font-semibold text-gray-800 uppercase">
+                   Item Specification
+                 </th>
+                 <th className="px-6 py-3 text-left text-md font-semibold text-gray-800 uppercase">
+                   1‑5KW
+                 </th>
+                 <th className="px-6 py-3 text-left text-md font-semibold text-gray-800 uppercase">
+                   4‑6KW
+                 </th>
+                 <th className="px-6 py-3 text-left text-md font-semibold text-gray-800 uppercase">
+                   6‑10KW
+                 </th>
+               </tr>
+               <tr className="">
+                 <td rowSpan={3} colSpan={2}>
+                   SPD‑STEL/ Finder MCB‑C&S{" "}
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">DCDB</td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   DCDB witd 600V SPD, 500V MCB
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   1 Nos. (1 in 1 Out)
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   1 Nos. (2 in 2 Out)
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   1 Nos. (2 in 2 Out)
+                 </td>
+               </tr>
+               <tr>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   ACDB 1‑Ph.
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   ACDB witd 1‑Ph. SPD & 1‑Ph. MCB
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">1 Nos.</td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">1 Nos.</td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">-</td>
+               </tr>
+               <tr>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   ACDB 3‑Ph.
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   ACDB witd 3 ‑Ph SPD & 3‑Ph. MCB
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">-</td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">-</td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">1 Nos.</td>
+               </tr>
+
+               <tr>
+                 <td colSpan={2}>Polycab</td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   Solar DC Wire
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   2.5 Sq.mm EN Standard
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   25 Mtr.
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   50 Mtr.
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   50 Mtr.
+                 </td>
+               </tr>
+               <tr>
+                 <td rowSpan={8}>Polycab</td>
+                 <td rowSpan={8}>Polyguard Or Reputed (ISI)</td>
+                 <td rowSpan={6}>AC Copper Flexible Wire</td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   <span className="text-red-500 px-3">(Option 1)</span> 2.5
+                   Sq.mm Red & Black Wire{" "}
+                   <span className="text-red-500 px-3">Polycab</span>
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   25 Mtr.
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">-</td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">-</td>
+               </tr>
+               <tr>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   <span className="text-red-500 px-3">(Option 1)</span>4 Sq.mm
+                   Red & Black Wire{" "}
+                   <span className="text-red-500 px-3">Polycab</span>
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">-</td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   25 Mtr.
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">-</td>
+               </tr>
+               <tr>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   <span className="text-red-500 px-3">(Option 1)</span>
+                   4C x 4 Sq.mm Cable{" "}
+                   <span className="text-red-500 px-3">Polycab</span>
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">-</td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">-</td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   25 Mtr.
+                 </td>
+               </tr>
+               <tr>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   <span className="text-red-500 px-3">(Option 2)</span> 2C x
+                   2.5 Sq.mm Cable{" "}
+                   <span className="text-red-500 px-3">Polyguard</span>
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   30 Mtr.
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">-</td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">-</td>
+               </tr>
+               <tr>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   <span className="text-red-500 px-3">(Option 2)</span>
+                   2C x 4 Sq.mm Cable{" "}
+                   <span className="text-red-500 px-3">Polyguard</span>
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">-</td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   30 Mtr.{" "}
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">-</td>
+               </tr>
+               <tr>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   {" "}
+                   <span className="text-red-500 px-3">(Option 2)</span>4C x 4
+                   Sq.mm Cable{" "}
+                   <span className="text-red-500 px-3">Polyguard</span>
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">-</td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">-</td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   30 Mtr.
+                 </td>
+               </tr>
+               <tr>
+                 <td rowSpan={2}>Eartding & LA Wire</td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   4 Sq.mm Copper Wire
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   50 Mtr.
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   50 Mtr.
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   50 Mtr.
+                 </td>
+               </tr>
+               <tr>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   16 Sq.mm Aluminum Wire
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   34 Mtr.
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   34 Mtr.
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   34 Mtr.
+                 </td>
+               </tr>
+               <tr>
+                 <td rowSpan={3} colSpan={2}>
+                   Samptel
+                 </td>
+                 <td rowSpan={3}>Eartding & LA</td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   Copper Bonded Multi‑Spike LA 14mm x 1 Mtr.
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">1 Nos.</td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">1 Nos.</td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">1 Nos.</td>
+               </tr>
+               <tr>
+                 {/* <td className="px-6 py-4 whitespace-nowrap text-sm"></td>
             <td className="px-6 py-4 whitespace-nowrap text-sm"></td>
             <td className="px-6 py-4 whitespace-nowrap text-sm"></td> */}
-              <td className="px-6 py-4 whitespace-nowrap text-sm">
-                Copper Bonded Multi‑Spike LA 14mm x 1 Mtr.
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">3 Nos.</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">3 Nos.</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">3 Nos.</td>
-            </tr>
-            <tr>
-              {/* <td className="px-6 py-4 whitespace-nowrap text-sm"></td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   Copper Bonded Multi‑Spike LA 14mm x 1 Mtr.
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">3 Nos.</td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">3 Nos.</td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">3 Nos.</td>
+               </tr>
+               <tr>
+                 {/* <td className="px-6 py-4 whitespace-nowrap text-sm"></td>
             <td className="px-6 py-4 whitespace-nowrap text-sm"></td>
             <td className="px-6 py-4 whitespace-nowrap text-sm"></td> */}
-              <td className="px-6 py-4 whitespace-nowrap text-sm">
-                Eartding Compound 15Kg Bag
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">1 Bag</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">1 Bag</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">1 Bag</td>
-            </tr>
-            <tr>
-              <td rowSpan={4} colSpan={2}>
-                Reputed
-              </td>
-              <td rowSpan={4}>PVC Conduit & Accessories</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">
-                25mm PVC Conduit LMS (Non‑ISI)
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">25 Nos.</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">40 Nos. </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">40 Nos. </td>
-            </tr>
-            <tr>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">
-                25mm PVC Elbow/Bend
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">
-                15/20 Nos.
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">
-                15/20 Nos.
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">
-                15/20 Nos.
-              </td>
-            </tr>
-            <tr>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">
-                25mm PVC Tee
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">15 Nos.</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">15 Nos.</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">15 Nos.</td>
-            </tr>
-            <tr>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">
-                25mm Flexible Pipe
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">5 Mtr.</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">5 Mtr.</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">5 Mtr.</td>
-            </tr>
-            <tr>
-              <td rowSpan={2} colSpan={2}>
-                Reputed
-              </td>
-              <td rowSpan={2}>Clamp & Cable Tie</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">
-                25mm PVC Nail Sadle
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">1 Pkt.</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">1 Pkt.</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">1 Pkt.</td>
-            </tr>
-            <tr>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">
-                300x4.8mm UV Cable Tie
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">1 Pkt.</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">1 Pkt.</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">1 Pkt.</td>
-            </tr>
-            <tr>
-              <td colSpan={2}>Ningbo Jinghua</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">MC 4</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">
-                Solar MC 4 Connector (TUV)
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">2 Pair</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">4 Pair</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">4 Pair</td>
-            </tr>
-            <tr>
-              <td rowSpan={3} colSpan={2}>
-                Reputed
-              </td>
-              <td rowSpan={3}>Lugs</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">
-                2.5/4 Sq.mm Plastic Lug
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">20 Nos.</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">20 Nos.</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">20 Nos.</td>
-            </tr>
-            <tr>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">
-                4 Sq.mm Ring Copper Lug
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">10 Nos.</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">10 Nos.</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">10 Nos.</td>
-            </tr>
-            <tr>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">
-                16 Sq.mm Ring Alu. Lug
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">4 Nos.</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">4 Nos.</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">4 Nos.</td>
-            </tr>
-            <tr>
-              <td colSpan={2}>Reputed</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">Screw</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">
-                25x6mm Screw for Eartding Link, ACDB & DCDB
-              </td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">20 Nos.</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">20 Nos.</td>
-              <td className="px-6 py-4 whitespace-nowrap text-sm">20 Nos.</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  );
-};
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   Eartding Compound 15Kg Bag
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">1 Bag</td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">1 Bag</td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">1 Bag</td>
+               </tr>
+               <tr>
+                 <td rowSpan={4} colSpan={2}>
+                   Reputed
+                 </td>
+                 <td rowSpan={4}>PVC Conduit & Accessories</td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   25mm PVC Conduit LMS (Non‑ISI)
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   25 Nos.
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   40 Nos.{" "}
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   40 Nos.{" "}
+                 </td>
+               </tr>
+               <tr>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   25mm PVC Elbow/Bend
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   15/20 Nos.
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   15/20 Nos.
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   15/20 Nos.
+                 </td>
+               </tr>
+               <tr>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   25mm PVC Tee
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   15 Nos.
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   15 Nos.
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   15 Nos.
+                 </td>
+               </tr>
+               <tr>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   25mm Flexible Pipe
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">5 Mtr.</td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">5 Mtr.</td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">5 Mtr.</td>
+               </tr>
+               <tr>
+                 <td rowSpan={2} colSpan={2}>
+                   Reputed
+                 </td>
+                 <td rowSpan={2}>Clamp & Cable Tie</td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   25mm PVC Nail Sadle
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">1 Pkt.</td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">1 Pkt.</td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">1 Pkt.</td>
+               </tr>
+               <tr>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   300x4.8mm UV Cable Tie
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">1 Pkt.</td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">1 Pkt.</td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">1 Pkt.</td>
+               </tr>
+               <tr>
+                 <td colSpan={2}>Ningbo Jinghua</td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">MC 4</td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   Solar MC 4 Connector (TUV)
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">2 Pair</td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">4 Pair</td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">4 Pair</td>
+               </tr>
+               <tr>
+                 <td rowSpan={3} colSpan={2}>
+                   Reputed
+                 </td>
+                 <td rowSpan={3}>Lugs</td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   2.5/4 Sq.mm Plastic Lug
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   20 Nos.
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   20 Nos.
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   20 Nos.
+                 </td>
+               </tr>
+               <tr>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   4 Sq.mm Ring Copper Lug
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   10 Nos.
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   10 Nos.
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   10 Nos.
+                 </td>
+               </tr>
+               <tr>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   16 Sq.mm Ring Alu. Lug
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">4 Nos.</td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">4 Nos.</td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">4 Nos.</td>
+               </tr>
+               <tr>
+                 <td colSpan={2}>Reputed</td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">Screw</td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   25x6mm Screw for Eartding Link, ACDB & DCDB
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   20 Nos.
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   20 Nos.
+                 </td>
+                 <td className="px-6 py-4 whitespace-nowrap text-sm">
+                   20 Nos.
+                 </td>
+               </tr>
+             </tbody>
+           </table>
+           {/* 
+           <table className="w-full border-collapse">
+             <thead>
+               <tr className="bg-cyan-900 text-white">
+                 <th rowSpan={2}>MRP</th>
+                 <th className="px-4 py-2 rounded-tl-lg">Option</th>
+                 <th className="px-4 py-2">Brand</th>
+                 <th className="px-4 py-2">Price 1 (₹)</th>
+                 <th className="px-4 py-2">Price 2 (₹)</th>
+                 <th className="px-4 py-2 rounded-tr-lg">Price 3 (₹)</th>
+               </tr>
+             </thead>
+             <tbody>
+               {data2.map((item, index) => (
+                 <tr
+                   key={index}
+                   className={`${
+                     index % 2 === 0 ? "bg-gray-50" : "bg-white"
+                   } text-center border-b`}
+                 >
+                   <td className="px-4 py-2 font-semibold">{item.option}</td>
+                   <td className="px-4 py-2">{item.brand}</td>
+                   {item.prices.map((price, i) => (
+                     <td
+                       key={i}
+                       className="px-4 py-2 text-orange-500 font-medium"
+                     >
+                       ₹{price.toLocaleString()}
+                     </td>
+                   ))}
+                 </tr>
+               ))}
+             </tbody>
+           </table> */}
+         </div>
+       </div>
+     );
+   };
 
 export default BOSKitTable;
