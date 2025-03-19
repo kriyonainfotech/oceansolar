@@ -11,7 +11,7 @@ import DCDBTable1 from "./DCDB_C1.JSX";
 import DCDB_LAST from "./DCDB_LAST";
 import Footer from "./Footer";
 import ScrollToTop from "./ScrollToTop";
-import ACDBTable1 from "./ACDB_C1.JSX";
+import ACDBTable from "./ACDB_C1";
 
 function App() {
   return (
@@ -23,7 +23,7 @@ function App() {
       <DCDB_MCB_SPD />
       <DCDB_FUSE_MCB_SPD />
       <BOSKitTable />
-      <ACDBTable1 />
+      <ACDBTable />
       <ACDBTable2 />
       <DCDBTable1 />
       <DCDB_LAST />

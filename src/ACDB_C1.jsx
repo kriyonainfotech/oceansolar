@@ -1,4 +1,4 @@
-const ACDBTable1 = () => {
+const ACDBTable = () => {
   const tableData = [
     {
       orderCode: "A.5-15.1IIO.AOS",
@@ -181,4 +181,4 @@ const ACDBTable1 = () => {
   );
 };
 
-export default ACDBTable1;
+export default ACDBTable;
