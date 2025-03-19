@@ -117,6 +117,7 @@ const ACDBTable1 = () => {
         Commercial & Industrial
       </h2>
       <h2 className="text-2xl font-bold mb-4">ACDB (Without No Volt Relay)</h2>
+     
       <div className="overflow-x-auto rounded-lg border">
         <table className="min-w-full divide-y divide-gray-200">
           <thead className="bg-gray-50">
@@ -165,7 +166,7 @@ const ACDBTable1 = () => {
                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
                   {item.gland}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap text-sm font-semibold">
+                <td className="px-6 py-4 whitespace-nowrap text-sm text-orange-400 font-bold">
                   {item.price} ₹
                 </td>
               </tr>

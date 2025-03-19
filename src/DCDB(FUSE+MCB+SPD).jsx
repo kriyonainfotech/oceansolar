@@ -117,6 +117,52 @@ const DCDB_FUSE_MCB_SPD = () => {
   return (
     <div className="p-6">
       <h2 className="text-2xl font-bold mb-4">DCDB (FUSE+MCB+SPD)</h2>
+      {/* Image Grid Section */}
+      <section className="py-16 bg-gray-100">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-10">
+            Our Products
+          </h2>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {/* Image 1 */}
+            <div className="rounded-lg overflow-hidden shadow-md hover:scale-105 transition-transform">
+              <img
+                src="/dcdb9.png"
+                alt="Product 1"
+                className="w-full h-full object-contain"
+              />
+            </div>
+
+            {/* Image 2 */}
+            <div className="rounded-lg overflow-hidden shadow-md hover:scale-105 transition-transform">
+              <img
+                src="/dcdb10.png"
+                alt="Product 2"
+                className="w-full h-full object-contain"
+              />
+            </div>
+
+            {/* Image 3 */}
+            <div className="rounded-lg overflow-hidden shadow-md hover:scale-105 transition-transform">
+              <img
+                src="/dcdb11.png"
+                alt="Product 3"
+                className="w-full h-full object-contain"
+              />
+            </div>
+
+            {/* Image 4 */}
+            <div className="rounded-lg overflow-hidden shadow-md hover:scale-105 transition-transform">
+              <img
+                src="/dcdb12.png"
+                alt="Product 4"
+                className="w-full h-full object-contain"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
       {/* Table Section */}
       <div className="overflow-x-auto rounded-lg border">
         <table className="min-w-full divide-y divide-gray-200">
@@ -170,7 +216,7 @@ const DCDB_FUSE_MCB_SPD = () => {
                 <td className="px-6 py-4 whitespace-nowrap text-sm">
                   {item.quantity}
                 </td>
-                <td className="px-4 py-3 font-bold text-orange-500">
+                <td className="px-4 py-3 font-bold text-orange-400">
                   ₹{prices[item.order] ?? item.price}
                 </td>
               </tr>

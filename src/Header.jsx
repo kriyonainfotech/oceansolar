@@ -1,68 +1,105 @@
+import { useState, useEffect } from "react";
+
 export default function Header() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50); // Change color after scrolling 50px
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div className="w-full font-sans">
       {/* Header */}
-      <header className="sticky top-0 bg-gray-100 shadow-md z-50">
-        <nav className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            {/* Logo */}
-            <div className="flex items-center space-x-2">
-              <img src="/LOGO.png" className='w-14 h-14' alt="" />
-              <span className="text-2xl font-bold text-blue-900">OceanSolar</span>
-            </div>
+      <header
+        className={`fixed top-0 left-0 w-full z-50 backdrop-blur-lg transition-all duration-300 shadow-md ${
+          isScrolled
+            ? "bg-[#ff9100] text-white"
+            : "bg-white text-gray-800 hover:text-orange-400 bg-opacity-90"
+        }`}
+      >
+        <nav className="container mx-auto px-6 py-4 flex items-center justify-between">
+          {/* Logo */}
+          <div className="flex items-center space-x-3">
+            <span className="text-3xl font-extrabold">OceanSolar</span>
+          </div>
 
-            {/* Navigation */}
-            <div className="hidden md:flex space-x-8">
-              <a href="#" className="text-gray-600 hover:text-[#ff9100] transition-colors">Home</a>
-              <a href="#" className="text-gray-600 hover:text-[#ff9100] transition-colors">Solutions</a>
-              <a href="#" className="text-gray-600 hover:text-[#ff9100] transition-colors">About</a>
-              <a href="#" className="text-gray-600 hover:text-[#ff9100] transition-colors">Contact</a>
-            </div>
+          {/* Navigation */}
+          <div className="hidden md:flex space-x-6 text-lg font-medium">
+            <a href="/" className="font-semibold">
+              Home
+            </a>
 
-            {/* CTA Button */}
-            <button className="bg-[#24578a] hover:bg-[#1a4066] text-white px-6 py-2 rounded-full transition-colors shadow-lg">
-              Get Started
+            <a href="#footer" className="font-semibold">
+              Contact
+            </a>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <div className="md:hidden">
+            <button className="text-gray-700 focus:outline-none">
+              <svg
+                className="w-8 h-8"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
             </button>
           </div>
         </nav>
       </header>
 
       {/* Hero Banner */}
-      <div className="bg-gradient-to-r from-[#ff9100] to-[#24578a] min-h-[70vh]">
-        <div className="container mx-auto px-6 py-16">
-          <div className="flex flex-col md:flex-row items-center justify-between">
+      <div className="relative min-h-[80vh] flex items-center bg-gradient-to-br from-[#24578a] to-[#ff9100]">
+        {/* Background Image with Overlay */}
+        <div className="absolute inset-0 bg-[url('/man.jpg')] bg-cover bg-center opacity-20"></div>
+
+        <div className="container mx-auto px-6 py-16 relative z-10">
+          <div className="grid md:grid-cols-2 items-center gap-12">
             {/* Text Content */}
-            <div className="md:w-1/2 mb-12 md:mb-0">
-              <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
-                Sustainable Energy From Sea & Sun
+            <div className="text-center md:text-left">
+              <h1 className="text-5xl md:text-6xl font-extrabold text-white leading-tight">
+                Sustainable Energy <br /> From Sea & Sun
               </h1>
-              <p className="text-xl text-white mb-8 opacity-90">
-                Innovating renewable energy solutions through ocean thermal and solar power integration.
+              <p className="text-lg text-white mt-6 opacity-90">
+                Innovating renewable energy solutions through ocean thermal and
+                solar power integration.
               </p>
-              <div className="flex space-x-4">
-                <button className="bg-white text-[#24578a] px-8 py-3 rounded-full text-lg font-semibold hover:bg-gray-100 transition-colors shadow-xl">
-                  Our Technology
-                </button>
-                <button className="border-2 border-white text-white px-8 py-3 rounded-full text-lg hover:bg-white hover:text-[#24578a] transition-colors">
+              <div className="mt-8 flex justify-center md:justify-start space-x-4">
+                <a
+                  href="#footer"
+                  className="border-2 border-white text-white px-6 py-3 rounded-full text-lg hover:bg-white hover:text-[#24578a] transition"
+                >
                   Contact Us
-                </button>
+                </a>
               </div>
             </div>
 
             {/* Image/Illustration */}
-            <div className="md:w-1/2 flex justify-center">
-              <div className="relative w-[400px] h-[400px] bg-white/20 rounded-full p-8 backdrop-blur-lg">
+            <div class="flex-container">
+              <div class="logo-wrapper">
                 <img
-                  src="/LOGO.png"
+                  src="https://res.cloudinary.com/dd6vjyu3c/image/upload/v1742364473/oceansolar_slzklr.png"
                   alt="Wave and Solar"
-                  className="animate-float"
+                  class="logo"
                 />
-                <div className="absolute -bottom-8 right-0 w-32 h-32 bg-[#24578a] rounded-full blur-xl opacity-30"></div>
+                <div class="shadow-effect"></div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  )
+  );
 }

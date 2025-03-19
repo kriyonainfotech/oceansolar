@@ -699,42 +699,28 @@ const data = [
                    20 Nos.
                  </td>
                </tr>
+               <tr className="bg-green-50 border border-green-700">
+                 <td rowSpan={2} colSpan={3} className=" ">
+                   MRP
+                 </td>
+                 <td>
+                   Option 1 <span className="text-red-500">( Polycab )</span>
+                 </td>
+                 <td className="text-orange-400 font-bold">10750 ₹</td>
+                 <td className="text-orange-400 font-bold">15600 ₹</td>
+                 <td className="text-orange-400 font-bold">17650 ₹</td>
+               </tr>
+               <tr className="bg-green-50 border border-green-700">
+                 <td>
+                   Option 2{" "}
+                   <span className="text-green-600">( Polyguard )</span>
+                 </td>
+                 <td className="text-orange-400 font-bold">9400 ₹</td>
+                 <td className="text-orange-400 font-bold">12625 ₹</td>
+                 <td className="text-orange-400 font-bold">15500 ₹</td>
+               </tr>
              </tbody>
            </table>
-           {/* 
-           <table className="w-full border-collapse">
-             <thead>
-               <tr className="bg-cyan-900 text-white">
-                 <th rowSpan={2}>MRP</th>
-                 <th className="px-4 py-2 rounded-tl-lg">Option</th>
-                 <th className="px-4 py-2">Brand</th>
-                 <th className="px-4 py-2">Price 1 (₹)</th>
-                 <th className="px-4 py-2">Price 2 (₹)</th>
-                 <th className="px-4 py-2 rounded-tr-lg">Price 3 (₹)</th>
-               </tr>
-             </thead>
-             <tbody>
-               {data2.map((item, index) => (
-                 <tr
-                   key={index}
-                   className={`${
-                     index % 2 === 0 ? "bg-gray-50" : "bg-white"
-                   } text-center border-b`}
-                 >
-                   <td className="px-4 py-2 font-semibold">{item.option}</td>
-                   <td className="px-4 py-2">{item.brand}</td>
-                   {item.prices.map((price, i) => (
-                     <td
-                       key={i}
-                       className="px-4 py-2 text-orange-500 font-medium"
-                     >
-                       ₹{price.toLocaleString()}
-                     </td>
-                   ))}
-                 </tr>
-               ))}
-             </tbody>
-           </table> */}
          </div>
        </div>
      );

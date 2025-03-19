@@ -1,12 +1,57 @@
 @import "tailwindcss";
-body {
+/* body {
     background-color: #f3f4f6 !important;
+}
+*/ html {
+    scroll-behavior: smooth;
 }
 th {
     border: 1px solid #d1d5dc;
     padding: 10px;
+    text-align: center;
 }
 td {
     border: 1px solid #d1d5dc;
     padding: 10px;
+    text-align: center;
+    }
+    
+    /* Container Styling */
+    .flex-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    /* Circular Background */
+    .logo-wrapper {
+        position: relative;
+        width: 450px;
+        height: 450px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        padding: 45px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease-out;
+    }
+    
+    /* Logo */
+    .logo {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transition: transform 0.3s ease-out;
+    }
+    
+    /* Hover Effect on Logo (Move Up & Left) */
+    .logo:hover {
+        transform: translate(-8px, -8px);
+        /* Moves left (-X) and up (-Y) */
+    }
+    
+    /* Hover Effect on Background (Move Down & Right) */
+    .logo-wrapper:hover {
+        transform: translate(8px, 8px);
+        /* Moves right (+X) and down (+Y) */
 }

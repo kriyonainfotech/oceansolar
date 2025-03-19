@@ -99,6 +99,7 @@ const DCDB_LAST = () => {
        {/* Main Products Table */}
        <div className="overflow-x-auto rounded-lg border mb-6">
          <h3 className="text-lg font-semibold p-4 bg-gray-100">AJB</h3>
+
          <table className="min-w-full divide-y divide-gray-200">
            <thead className="bg-gray-50">
              <tr>
@@ -146,7 +147,7 @@ const DCDB_LAST = () => {
                  <td className="px-6 py-4 whitespace-nowrap text-sm">
                    {item.spdType}
                  </td>
-                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                 <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-orange-400">
                    {item.price}
                  </td>
                </tr>
@@ -164,7 +165,7 @@ const DCDB_LAST = () => {
                <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
                  Item
                </th>
-               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+               <th className="px-6 py-3 text-left text-xs font-medium uppercase">
                  Price
                </th>
              </tr>
@@ -175,7 +176,7 @@ const DCDB_LAST = () => {
                  <td className="px-6 py-4 whitespace-nowrap text-sm">
                    {item.item}
                  </td>
-                 <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                 <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-orange-400">
                    {item.price} ₹
                  </td>
                </tr>

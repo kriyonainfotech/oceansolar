@@ -60,6 +60,7 @@ const GOOGLE_SHEET_URL = import.meta.env.VITE_GOOGLE_SHEET_URL;
 console.log(GOOGLE_SHEET_URL);
 
 const ACDBResidential = () => {
+  
   const [prices, setPrices] = useState({});
 
   useEffect(() => {
@@ -91,6 +92,53 @@ const ACDBResidential = () => {
     <div className="p-6">
       {/* Title */}
       <h2 className="text-2xl font-bold mb-4">ACDB ( Residential )</h2>
+
+      {/* Image Grid Section */}
+      <section className="py-16 bg-gray-100">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-800 mb-10">
+            Our Products
+          </h2>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {/* Image 1 */}
+            <div className="rounded-lg overflow-hidden shadow-md hover:scale-105 transition-transform">
+              <img
+                src="/acdb1.png"
+                alt="Product 1"
+                className="w-full h-full object-contain"
+              />
+            </div>
+
+            {/* Image 2 */}
+            <div className="rounded-lg overflow-hidden shadow-md hover:scale-105 transition-transform">
+              <img
+                src="/acdb2.png"
+                alt="Product 2"
+                className="w-full h-full object-contain"
+              />
+            </div>
+
+            {/* Image 3 */}
+            <div className="rounded-lg overflow-hidden shadow-md hover:scale-105 transition-transform">
+              <img
+                src="/acdb3.png"
+                alt="Product 3"
+                className="w-full h-full object-contain"
+              />
+            </div>
+
+            {/* Image 4 */}
+            <div className="rounded-lg overflow-hidden shadow-md hover:scale-105 transition-transform">
+              <img
+                src="/acdb4.png"
+                alt="Product 4"
+                className="w-full h-full object-contain"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
 
       {/* Table Wrapper for Proper Border-Radius */}
       <div className="overflow-x-auto rounded-lg border">
@@ -147,7 +195,7 @@ const ACDBResidential = () => {
                 <td className="px-6 py-4 whitespace-nowrap text-sm">
                   {item.phase_indicator}
                 </td>
-                <td className="border border-gray-300 px-4 py-2 font-bold text-orange-500">
+                <td className="border border-gray-300 px-4 py-2 font-bold text-orange-400">
                   ₹{prices[item.orderCode] ?? item.price}
                 </td>
               </tr>
