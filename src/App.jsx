@@ -11,12 +11,13 @@ import DCDB_LAST from "./DCDB_LAST";
 import Footer from "./Footer";
 import ScrollToTop from "./ScrollToTop";
 import ACDBTable1 from "./ACDB_C1";
+import HeaderHero from "./Header";
 
 function App() {
   return (
     <>
       <ScrollToTop />
-      <Header />
+      <HeaderHero />
       <ACDBResidential />
       <DCDBFuseSPD />
       <DCDB_MCB_SPD />
