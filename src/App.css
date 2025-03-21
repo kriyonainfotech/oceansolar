@@ -56,7 +56,7 @@ tr:hover {
 .logo-wrapper {
   position: relative;
   width: 80vw;
-  max-width: 450px;
+  max-width: 450px; 
   height: 80vw;
   max-height: 450px;
   background: rgba(255, 255, 255, 0.2);
@@ -86,18 +86,46 @@ tr:hover {
 }
 
 /* Responsive Adjustments */
-@media (max-width: 768px) {
-  .logo-wrapper {
-    width: 60vw;
-    height: 60vw;
-    padding: 6vw;
-  }
+@media (min-width: 992px) {
+   .flex-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    /* Circular Background */
+    .logo-wrapper {
+        position: relative;
+        width: 450px;
+        height: 450px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50%;
+        padding: 45px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease-out;
+    }
+    
+    /* Logo */
+    .logo {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transition: transform 0.3s ease-out;
+    }
+    
+    /* Hover Effect on Logo (Move Up & Left) */
+    .logo:hover {
+        transform: translate(-8px, -8px);
+        /* Moves left (-X) and up (-Y) */
+    }
+    
 }
 
-@media (max-width: 480px) {
+/* @media (max-width: 480px) {
   .logo-wrapper {
     width: 50vw;
     height: 50vw;
     padding: 5vw;
   }
-}
+} */
