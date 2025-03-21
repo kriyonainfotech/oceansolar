@@ -42,6 +42,16 @@ export default function Footer() {
       {/* Copyright */}
       <div className="text-center text-sm opacity-70 mt-8 border-t border-white/20 pt-4">
         © 2025 Ocean Solar. All rights reserved.
+        <p>
+          Developed By{" "}
+          <a
+            className="underline pt-10  "
+            target="_blank"
+            href="https://kriyonainfotech.com/"
+          >
+            KriyonaInfotech
+          </a>
+        </p>
       </div>
     </footer>
   );
