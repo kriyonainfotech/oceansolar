@@ -1,3 +1,8 @@
+import { useEffect, useState } from "react";
+
+const GOOGLE_SHEET_URL = import.meta.env.VITE_GOOGLE_SHEET_URL;
+console.log(GOOGLE_SHEET_URL);
+
 const ACDBTable1 = () => {
   const tableData = [
     {
@@ -111,6 +116,33 @@ const ACDBTable1 = () => {
     },
   ];
 
+  const [prices, setPrices] = useState({});
+
+  useEffect(() => {
+    const fetchPrices = async () => {
+      try {
+        const response = await fetch(GOOGLE_SHEET_URL);
+        const text = await response.text();
+        const rows = text.split("\n").map((row) => row.split(","));
+
+        const updatedPrices = {};
+        rows.slice(1).forEach(([, orderCode, price]) => {
+          // Ignore title (Column A) and process only Order Code (B) & Price (C)
+          if (orderCode && price) {
+            updatedPrices[orderCode.trim()] = parseFloat(price);
+          }
+        });
+
+        console.log(updatedPrices, "updatedPrices");
+        setPrices(updatedPrices);
+      } catch (error) {
+        console.error("Error fetching prices:", error);
+      }
+    };
+
+    fetchPrices();
+  }, []);
+
   return (
     <div className="p-6">
       <h2 className="text-3xl text-center text-gray-800 border-b pb-2 border-gray-300 font-bold mb-4">
@@ -167,7 +199,7 @@ const ACDBTable1 = () => {
                   {item.gland}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap text-sm text-orange-400 font-bold">
-                  {item.price} ₹
+                  ₹{prices[item.orderCode] ?? item.price}
                 </td>
               </tr>
             ))}

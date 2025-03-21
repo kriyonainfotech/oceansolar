@@ -1,199 +1,236 @@
 import React from 'react'
+import { useEffect, useState } from "react";
+
+const GOOGLE_SHEET_URL = import.meta.env.VITE_GOOGLE_SHEET_URL;
+console.log(GOOGLE_SHEET_URL);
 
 const DCDB_LAST = () => {
+  const solarComponents = {
+    mainProducts: [
+      {
+        orderCode: "536",
+        inOut: "2 in 1 Out",
+        fuse: "20/25A",
+        dcMCB: "32A-500V",
+        dcIsolator: "-",
+        spdType: "T2-600V",
+        price: "1650 ₹",
+      },
+      {
+        orderCode: "537",
+        inOut: "3 in 1 Out",
+        fuse: "20/25A",
+        dcMCB: "32A-500V",
+        dcIsolator: "-",
+        spdType: "T2-600V",
+        price: "2175 ₹",
+      },
+      {
+        orderCode: "538",
+        inOut: "4 in 1 Out",
+        fuse: "20/25A",
+        dcMCB: "63A-500V",
+        dcIsolator: "-",
+        spdType: "T2-600V",
+        price: "2800 ₹",
+      },
+      {
+        orderCode: "538",
+        inOut: "6 in 1 Out",
+        fuse: "20/25A",
+        dcMCB: "63A-500/800V",
+        dcIsolator: "-",
+        spdType: "T2-1000V",
+        price: "4500 ₹",
+      },
+      {
+        orderCode: "540",
+        inOut: "8 in 1 Out",
+        fuse: "20/25A",
+        dcMCB: "-",
+        dcIsolator: "125/160A-1000V",
+        spdType: "T2-1000V",
+        price: "10700 ₹",
+      },
+      {
+        orderCode: "541",
+        inOut: "10 in 1 Out",
+        fuse: "20/25A",
+        dcMCB: "-",
+        dcIsolator: "160/200A-1000V",
+        spdType: "T2-1000V",
+        price: "14500 ₹",
+      },
+    ],
 
-    const solarComponents = {
-      mainProducts: [
+    mc4Components: {
+      connectors: [
         {
-          orderCode: "536",
-          inOut: "2 in 1 Out",  
-          fuse: "20/25A",
-          dcMCB: "32A-500V",
-          dcIsolator: "-",
-          spdType: "T2-600V",
-          price: "1650 ₹",
+          item: "MC4 Connector LQ 1",
+          price: "21",
+          orderCode: 1,
         },
         {
-          orderCode: "537",
-          inOut: "3 in 1 Out",
-          fuse: "20/25A",
-          dcMCB: "32A-500V",
-          dcIsolator: "-",
-          spdType: "T2-600V",
-          price: "2175 ₹",
+          item: "MC4 Panel Connector LQ 2",
+          price: "24",
+          orderCode: 2,
         },
         {
-          orderCode: "538",
-          inOut: "4 in 1 Out",
-          fuse: "20/25A",
-          dcMCB: "63A-500V",
-          dcIsolator: "-",
-          spdType: "T2-600V",
-          price: "2800 ₹",
+          item: "2 in 1 out Y Connector Cable",
+          price: "195",
+          orderCode: 3,
         },
         {
-          orderCode: "538",
-          inOut: "6 in 1 Out",
-          fuse: "20/25A",
-          dcMCB: "63A-500/800V",
-          dcIsolator: "-",
-          spdType: "T2-1000V",
-          price: "4500 ₹",
+          item: "MC4 Branch Connector 2 in 1 out T2",
+          price: "150",
+          orderCode: 4,
         },
         {
-          orderCode: "540",
-          inOut: "8 in 1 Out",
-          fuse: "20/25A",
-          dcMCB: "-",
-          dcIsolator: "125/160A-1000V",
-          spdType: "T2-1000V",
-          price: "10700 ₹",
+          item: "MC4 Branch Connector 3 in 1 out T3",
+          price: "240",
+          orderCode: 5,
         },
         {
-          orderCode: "541",
-          inOut: "10 in 1 Out",
-          fuse: "20/25A",
-          dcMCB: "-",
-          dcIsolator: "160/200A-1000V",
-          spdType: "T2-1000V",
-          price: "14500 ₹",
+          item: "MC4 Branch Connector 4 in 1 out T4",
+          price: "325",
+          orderCode: 6,
         },
       ],
-
-      mc4Components: {
-        connectors: [
-          {
-            item: "MC4 Connector LQ 1",
-            price: "21",
-          },
-          {
-            item: "MC4 Panel Connector LQ 2",
-            price: "24",
-          },
-          {
-            item: "2 in 1 out Y Connector Cable",
-            price: "195",
-          },
-          {
-            item: "MC4 Branch Connector 2 in 1 out T2",
-            price: "150",
-          },
-          {
-            item: "MC4 Branch Connector 3 in 1 out T3",
-            price: "240",
-          },
-          {
-            item: "MC4 Branch Connector 4 in 1 out T4",
-            price: "325",
-          },
-        ],
-        inlineFuse: {
-          item: "MC4 Inline Fuse Connector 1500V 20A-30A",
-          price: "310 ₹ per Piece",
-        },
+      inlineFuse: {
+        item: "MC4 Inline Fuse Connector 1500V 20A-30A",
+        price: "310 ₹ per Piece",
       },
+    },
+  };
+
+  const [prices, setPrices] = useState({});
+
+  useEffect(() => {
+    const fetchPrices = async () => {
+      try {
+        const response = await fetch(GOOGLE_SHEET_URL);
+        const text = await response.text();
+        const rows = text.split("\n").map((row) => row.split(","));
+
+        const updatedPrices = {};
+        rows.slice(1).forEach(([, orderCode, price]) => {
+          // Ignore title (Column A) and process only Order Code (B) & Price (C)
+          if (orderCode && price) {
+            updatedPrices[orderCode.trim()] = parseFloat(price);
+          }
+        });
+
+        console.log(updatedPrices, "updatedPrices");
+        setPrices(updatedPrices);
+      } catch (error) {
+        console.error("Error fetching prices:", error);
+      }
     };
 
-   return (
-     <div className="p-6">
-       {/* Main Products Table */}
-       <div className="overflow-x-auto rounded-lg border mb-6">
-         <h3 className="text-lg font-semibold p-4 bg-gray-100">AJB</h3>
+    fetchPrices();
+  }, []);
 
-         <table className="min-w-full divide-y divide-gray-200">
-           <thead className="bg-gray-50">
-             <tr>
-               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                 Order Code
-               </th>
-               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                 In/Out
-               </th>
-               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                 Fuse
-               </th>
-               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                 DC MCB
-               </th>
-               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                 DC Isolator
-               </th>
-               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                 SPD Type
-               </th>
-               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                 Price
-               </th>
-             </tr>
-           </thead>
-           <tbody className="bg-white divide-y divide-gray-200">
-             {solarComponents.mainProducts.map((item, index) => (
-               <tr key={index}>
-                 <td className="px-6 py-4 whitespace-nowrap text-sm font-mono text-blue-600">
-                   {item.orderCode}
-                 </td>
-                 <td className="px-6 py-4 whitespace-nowrap text-sm">
-                   {item.inOut}
-                 </td>
-                 <td className="px-6 py-4 whitespace-nowrap text-sm">
-                   {item.fuse}
-                 </td>
-                 <td className="px-6 py-4 whitespace-nowrap text-sm">
-                   {item.dcMCB}
-                 </td>
-                 <td className="px-6 py-4 whitespace-nowrap text-sm">
-                   {item.dcIsolator}
-                 </td>
-                 <td className="px-6 py-4 whitespace-nowrap text-sm">
-                   {item.spdType}
-                 </td>
-                 <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-orange-400">
-                   {item.price}
-                 </td>
-               </tr>
-             ))}
-           </tbody>
-         </table>
-       </div>
+  return (
+    <div className="p-6">
+      {/* Main Products Table */}
+      <div className="overflow-x-auto rounded-lg border mb-6">
+        <h3 className="text-lg font-semibold p-4 bg-gray-100">AJB</h3>
 
-       {/* MC4 Connectors Table */}
-       <div className="overflow-x-auto rounded-lg border mb-6">
-         <h3 className="text-lg font-semibold p-4 bg-gray-100">MC 4</h3>
-         <table className="min-w-full divide-y divide-gray-200">
-           <thead className="bg-gray-50">
-             <tr>
-               <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
-                 Item
-               </th>
-               <th className="px-6 py-3 text-left text-xs font-medium uppercase">
-                 Price
-               </th>
-             </tr>
-           </thead>
-           <tbody className="bg-white divide-y divide-gray-200">
-             {solarComponents.mc4Components.connectors.map((item, index) => (
-               <tr key={index}>
-                 <td className="px-6 py-4 whitespace-nowrap text-sm">
-                   {item.item}
-                 </td>
-                 <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-orange-400">
-                   {item.price} ₹
-                 </td>
-               </tr>
-             ))}
-             <tr>
-               <td className="px-6 py-4 whitespace-nowrap text-sm">
-                 {solarComponents.mc4Components.inlineFuse.item}
-               </td>
-               <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
-                 {solarComponents.mc4Components.inlineFuse.price}
-               </td>
-             </tr>
-           </tbody>
-         </table>
-       </div>
-     </div>
-   );
-}
+        <table className="min-w-full divide-y divide-gray-200">
+          <thead className="bg-gray-50">
+            <tr>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                Order Code
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                In/Out
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                Fuse
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                DC MCB
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                DC Isolator
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                SPD Type
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                Price
+              </th>
+            </tr>
+          </thead>
+          <tbody className="bg-white divide-y divide-gray-200">
+            {solarComponents.mainProducts.map((item, index) => (
+              <tr key={index}>
+                <td className="px-6 py-4 whitespace-nowrap text-sm font-mono text-blue-600">
+                  {item.orderCode}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm">
+                  {item.inOut}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm">
+                  {item.fuse}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm">
+                  {item.dcMCB}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm">
+                  {item.dcIsolator}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm">
+                  {item.spdType}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-orange-400">
+                  ₹{prices[item.orderCode] ?? item.price}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {/* MC4 Connectors Table */}
+      <div className="overflow-x-auto rounded-lg border mb-6">
+        <h3 className="text-lg font-semibold p-4 bg-gray-100">MC 4</h3>
+        <table className="min-w-full divide-y divide-gray-200">
+          <thead className="bg-gray-50">
+            <tr>
+              <th className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase">
+                Item
+              </th>
+              <th className="px-6 py-3 text-left text-xs font-medium uppercase">
+                Price
+              </th>
+            </tr>
+          </thead>
+          <tbody className="bg-white divide-y divide-gray-200">
+            {solarComponents.mc4Components.connectors.map((item, index) => (
+              <tr key={index}>
+                <td className="px-6 py-4 whitespace-nowrap text-sm">
+                  {item.item}
+                </td>
+                <td className="px-6 py-4 whitespace-nowrap text-sm font-bold text-orange-400">
+                  {/* ₹{prices[item.orderCode] ?? item.price}  */} ₹
+                  {prices[item.orderCode] ?? item.price}
+                </td>
+              </tr>
+            ))}
+            <tr>
+              <td className="px-6 py-4 whitespace-nowrap text-sm">
+                {solarComponents.mc4Components.inlineFuse.item}
+              </td>
+              <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                {solarComponents.mc4Components.inlineFuse.price}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  );
+};
 
 export default DCDB_LAST
