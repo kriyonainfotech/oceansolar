@@ -168,7 +168,7 @@ export default function HeaderHero() {
 
         {/* Mobile Menu */}
         {menuOpen && (
-          <div className="md:hidden bg-white shadow-lg flex flex-col items-center space-y-4 py-4">
+          <div className="md:hidden bg-white shadow-lg flex flex-col items-center text-gray-800 space-y-4 py-4">
             <a
               href="/"
               className="text-lg font-semibold"
